@@ -5,6 +5,9 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import SignUpPage from "./pages/SignUpPage.tsx";
 import SignInPage from "./pages/SignInPage.tsx";
+import { Toaster } from "sonner";
+import MainPage from "./pages/MainPage.tsx";
+import { SidebarProvider } from "./components/ui/sidebar.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +24,18 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/main",
+    element: <MainPage />,
+    children: [{}],
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <SidebarProvider defaultOpen={false}>
+      <RouterProvider router={router} />
+      <Toaster />
+    </SidebarProvider>
   </StrictMode>,
 );
