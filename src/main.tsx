@@ -27,7 +27,11 @@ const router = createBrowserRouter([
   {
     path: "/main",
     element: <MainPage />,
-    children: [{}],
+    children: [
+      {
+        path: "t/:threadId",
+      },
+    ],
   },
 ]);
 
